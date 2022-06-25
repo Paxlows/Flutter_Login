@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:date_field/date_field.dart';
 
 class Signup extends StatefulWidget {
   const Signup({Key? key}) : super(key: key);
@@ -9,6 +8,10 @@ class Signup extends StatefulWidget {
 }
 
 class _SignupState extends State<Signup> {
+  DateTime? date;
+
+  final TextEditingController _controller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -132,28 +135,43 @@ class _SignupState extends State<Signup> {
                     ),
                   ),
                   const SizedBox(height: 20),
-                  DateTimeFormField(
-                    dateTextStyle: const TextStyle(color: Colors.white),
-                    decoration: const InputDecoration(
-                      hintStyle: TextStyle(color: Colors.white),
-                      errorStyle: TextStyle(color: Colors.redAccent),
-                      enabledBorder: UnderlineInputBorder(
+                  TextField(
+                    controller: _controller,
+                    style: const TextStyle(color: Colors.white),
+                    decoration: InputDecoration(
+                      hintStyle: const TextStyle(color: Colors.white),
+                      errorStyle: const TextStyle(color: Colors.redAccent),
+                      enabledBorder: const UnderlineInputBorder(
                         borderSide: BorderSide(color: Colors.white),
                       ),
-                      icon: Icon(
+                      focusedBorder: const UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white, width: 2),
+                      ),
+                      icon: const Icon(
                         Icons.event_note,
                         color: Colors.white,
                       ),
                       labelText: 'Date Of Birth',
-                      labelStyle: TextStyle(color: Colors.white),
+                      labelStyle: const TextStyle(color: Colors.white),
+                      suffixIcon: IconButton(
+                        icon: const Icon(
+                          Icons.arrow_downward_rounded,
+                          color: Colors.white,
+                        ),
+                        onPressed: (() async {
+                          DateTime? newDate = await showDatePicker(
+                              context: context,
+                              initialDate: DateTime.now(),
+                              firstDate: DateTime(1950, 1),
+                              lastDate: DateTime.now());
+                          if (newDate == null) return;
+                          setState(() {
+                            date = newDate;
+                            _controller.text = date.toString();
+                          });
+                        }),
+                      ),
                     ),
-                    mode: DateTimeFieldPickerMode.date,
-                    autovalidateMode: AutovalidateMode.always,
-                    validator: (e) =>
-                        (e?.day ?? 0) == 1 ? 'Please not the first day' : null,
-                    onDateSelected: (DateTime value) {
-                      // print(value);
-                    },
                   ),
                   const SizedBox(height: 20),
                   const TextField(

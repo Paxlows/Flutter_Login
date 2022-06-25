@@ -36,7 +36,7 @@ class Forgotpass extends StatelessWidget {
               child: Column(
                 children: [
                   const TextField(
-                    keyboardType: TextInputType.number,
+                    keyboardType: TextInputType.emailAddress,
                     style: TextStyle(color: Colors.white),
                     decoration: InputDecoration(
                       icon: Icon(
@@ -44,7 +44,7 @@ class Forgotpass extends StatelessWidget {
                         color: Colors.white,
                         size: 25,
                       ),
-                      labelText: "Phone Number",
+                      labelText: "Email ID",
                       labelStyle: TextStyle(color: Colors.white),
                       enabledBorder: UnderlineInputBorder(
                         borderSide: BorderSide(color: Colors.white, width: 1),
@@ -56,7 +56,7 @@ class Forgotpass extends StatelessWidget {
                   ),
                   const SizedBox(height: 30),
                   const Text(
-                    "We will send an OTP on this number",
+                    "We will send an OTP to this Recovery Mail ID",
                     style: TextStyle(
                         color: Colors.white, fontWeight: FontWeight.bold),
                   ),

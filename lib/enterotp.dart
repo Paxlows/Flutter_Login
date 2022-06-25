@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
+import 'package:flutter/services.dart';
 
 class Enterotp extends StatelessWidget {
   const Enterotp({Key? key}) : super(key: key);
@@ -34,23 +34,126 @@ class Enterotp extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             Container(
-              margin: const EdgeInsets.symmetric(horizontal: 20),
+              margin: const EdgeInsets.symmetric(horizontal: 40),
               child: Column(
                 children: [
                   const Text(
-                    "Enter the 5 digit OTP sent to your Number",
+                    "Enter the 4 digit OTP sent to your Number",
                     style: TextStyle(color: Colors.white),
                   ),
                   const SizedBox(height: 20),
-                  OtpTextField(
-                    textStyle: const TextStyle(color: Colors.white),
-                    numberOfFields: 5,
-                    borderColor: Colors.white,
-                    focusedBorderColor: Colors.white,
-                    //set to true to show as box or false to show as dash
-                    showFieldAsBox: true,
-                    onCodeChanged: (String code) {},
-                    onSubmit: (String verificationCode) {},
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      SizedBox(
+                        width: 64,
+                        child: TextFormField(
+                          onChanged: (value) {
+                            if (value.length == 1) {
+                              FocusScope.of(context).nextFocus();
+                            }
+                          },
+                          keyboardType: TextInputType.number,
+                          style: const TextStyle(color: Colors.white),
+                          textAlign: TextAlign.center,
+                          decoration: InputDecoration(
+                            labelStyle: const TextStyle(color: Colors.white),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: const BorderSide(color: Colors.white),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: const BorderSide(color: Colors.white),
+                            ),
+                          ),
+                          inputFormatters: [
+                            LengthLimitingTextInputFormatter(1)
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        width: 64,
+                        child: TextFormField(
+                          onChanged: (value) {
+                            if (value.length == 1) {
+                              FocusScope.of(context).nextFocus();
+                            }
+                          },
+                          keyboardType: TextInputType.number,
+                          style: const TextStyle(color: Colors.white),
+                          textAlign: TextAlign.center,
+                          decoration: InputDecoration(
+                            labelStyle: const TextStyle(color: Colors.white),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: const BorderSide(color: Colors.white),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: const BorderSide(color: Colors.white),
+                            ),
+                          ),
+                          inputFormatters: [
+                            LengthLimitingTextInputFormatter(1)
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        width: 64,
+                        child: TextFormField(
+                          onChanged: (value) {
+                            if (value.length == 1) {
+                              FocusScope.of(context).nextFocus();
+                            }
+                          },
+                          keyboardType: TextInputType.number,
+                          style: const TextStyle(color: Colors.white),
+                          textAlign: TextAlign.center,
+                          decoration: InputDecoration(
+                            labelStyle: const TextStyle(color: Colors.white),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: const BorderSide(color: Colors.white),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: const BorderSide(color: Colors.white),
+                            ),
+                          ),
+                          inputFormatters: [
+                            LengthLimitingTextInputFormatter(1)
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        width: 64,
+                        child: TextFormField(
+                          onChanged: (value) {
+                            if (value.length == 1) {
+                              FocusScope.of(context).nextFocus();
+                            }
+                          },
+                          keyboardType: TextInputType.number,
+                          style: const TextStyle(color: Colors.white),
+                          textAlign: TextAlign.center,
+                          decoration: InputDecoration(
+                            labelStyle: const TextStyle(color: Colors.white),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: const BorderSide(color: Colors.white),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: const BorderSide(color: Colors.white),
+                            ),
+                          ),
+                          inputFormatters: [
+                            LengthLimitingTextInputFormatter(1)
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
                   const SizedBox(height: 50),
                   InkWell(
